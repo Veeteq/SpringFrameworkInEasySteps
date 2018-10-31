@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean name="employee01" class="com.springframework.Employee">
+		<property name="id" value="20" />
+		<property name="name" value="Witek" />
+	</bean>
+
+	<bean name="employee02" class="com.springframework.Employee" p:id="30" p:name="Magda" />
+
+	<bean name="hospital" class="com.springframework.Hospital" p:name="Borowska">
+		<property name="departments">
+			<list>
+				<value>Cardiology</value>
+				<value>Dermatology</value>
+				<value>Gynaecology</value>
+				<value>Neurology</value>
+				<value>Physiotherapy</value>
+				<value>Paediatrics services</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="carDealer" class="com.springframework.CarDealer" p:name="Honda Motors">
+	<property name="models">
+		<set>
+			<value>Civic</value>
+			<value>Accord</value>
+			<value>Shadow</value>
+		</set>
+	</property>
+</bean>
+</beans>
