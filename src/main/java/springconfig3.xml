@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config />
+    <context:property-placeholder location="database.properties"/>
+	<bean name="address" class="com.springframework.Address" p:number="100" p:street="Wybrzeże Wyspiańskiego" p:city="Wrocław" />
+
+	<bean name="employee1" class="com.springframework.Employee">
+		<constructor-arg>
+			<value>1201</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>Witek</value>
+		</constructor-arg>
+		<constructor-arg>
+            <ref bean="address" />
+        </constructor-arg>
+	</bean>
+	
+	<bean name="employee2" class="com.springframework.Employee" c:id="1202" c:name="Magda" c:address-ref="address" />
+	
+	<bean name="employee3" class="com.springframework.Employee">
+        <constructor-arg value="1203" />        
+        <constructor-arg value="Michał" />
+        <constructor-arg ref="address" />        
+    </bean>
+    
+    <bean name="addition" class="com.springframework.Addition">
+        <constructor-arg value="10" />        
+        <constructor-arg value="20.0" />
+    </bean>
+
+	<bean name="propertiesDAO" class="com.springframework.PropertiesDAO">
+		<constructor-arg value="${dbServer}" name="dbServer" />
+		<constructor-arg value="${dbUser}" name="dbUser" />
+		<constructor-arg value="${dbPassword}" name="dbPasswd" />
+		<constructor-arg value="${url}" name="url" />
+		<constructor-arg value="${dbPort}" name="port" />
+	</bean>
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config />
+    
+    <!-- 
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
+     -->
+     
+	<bean name="patient1" class="com.springframework.lc.Patient1" p:id="123" init-method="sayHello" destroy-method="sayBye"/>
+	<bean name="patient2" class="com.springframework.lc.Patient2" p:id="234" />
+    <bean name="patient3" class="com.springframework.lc.Patient3" p:id="345" />
+    
+    <bean name="ticketReservation" class="com.springframework.lc.TicketReservation" p:id="1011" />
+</beans>
