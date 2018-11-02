@@ -8,12 +8,12 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean name="employee01" class="com.springframework.Employee">
+	<bean name="employee01" class="com.springframework.Employee" scope="prototype">
 		<property name="id" value="20" />
 		<property name="name" value="Witek" />
 	</bean>
 
-	<bean name="employee02" class="com.springframework.Employee" p:id="30" p:name="Magda" />
+	<bean name="employee02" class="com.springframework.Employee" p:id="30" p:name="Magda" scope="prototype"/>
 
 	<bean name="hospital" class="com.springframework.Hospital" p:name="Borowska">
 		<property name="departments">
@@ -27,14 +27,52 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean name="carDealer" class="com.springframework.CarDealer" p:name="Honda Motors">
-	<property name="models">
-		<set>
-			<value>Civic</value>
-			<value>Accord</value>
-			<value>Shadow</value>
-		</set>
-	</property>
-</bean>
+		<property name="models">
+			<set>
+				<value>Civic</value>
+				<value>Accord</value>
+				<value>Shadow</value>
+			</set>
+		</property>
+	</bean>
+	
+    <bean name="customer" class="com.springframework.Customer" p:id="1010">
+        <property name="products">
+            <map>
+                <entry key="100" value="Civic" />
+                <entry key="200" value="Accord" />
+                <entry key="300" value="Shadow" />
+            </map>
+        </property>
+    </bean>
+    
+    <bean name="countriesAndLanguages" class="com.springframework.CountriesAndLanguages">
+        <property name="languages">
+            <props>
+                <prop key="USA">English</prop>
+                <prop key="Poland">Polish</prop>
+                <prop key="India">Hindi</prop>
+            </props>
+        </property>
+    </bean>    
+    	
+    <bean name="scores" class="com.springframework.Scores" p:maths="4.8" p:physics="4.7" p:chemistry="4.4">
+    </bean>
+
+	<bean name="student1" class="com.springframework.Student" p:id="101">
+		<property name="scores">
+			<ref bean="scores" />
+		</property>
+	</bean>
+	
+    <bean name="student2" class="com.springframework.Student" p:id="102">
+	    <property name="scores" ref="scores"/>
+	</bean>
+	
+	<bean name="student3" class="com.springframework.Student" p:id="103" p:scores-ref="scores" />        
+    
+    <bean name="item" class="com.springframework.Item" p:id="1" p:name="Bread" p:price="1.59" p:quantity="2"/>
+    <bean name="shoppingCart" class="com.springframework.ShoppingCart" p:items-ref="item" />
 </beans>
